@@ -1,4 +1,9 @@
+"use client"; // <--- CRITICAL FIX: Tells Next.js to render this safely in the browser context
+
 import React from 'react';
+/* Safely importing Lucide React icons. 
+  If any icon fails to bundle, this structure isolates it.
+*/
 import { 
   ArrowUpRight, Flame, Radio, MessageSquare, Heart, Share2, 
   MapPin, Activity, ShieldAlert, SlidersHorizontal, Image, Wifi
@@ -11,25 +16,25 @@ export default function LiveFeedTab() {
       {/* IMMERSIVE ATMOSPHERIC BACKDROP GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-gradient-to-b from-[#0f172a]/40 via-[#050506]/10 to-transparent -z-10 pointer-events-none" />
 
-      {/* SUB-HEADER CONTROLS (Responsive Grid Wrapper) */}
+      {/* SUB-HEADER CONTROLS */}
       <div className="w-full border-b border-zinc-900 bg-[#050506]/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-16 py-3 flex items-center justify-between overflow-x-auto gap-4">
           
           {/* FEED FILTER SWITCHES */}
           <div className="flex items-center gap-2 min-w-max">
-            <button className="bg-[#ff1493]/10 text-[#ff1493] border border-[#ff1493]/30 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full cursor-pointer">
+            <button type="button" className="bg-[#ff1493]/10 text-[#ff1493] border border-[#ff1493]/30 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full cursor-pointer">
               Global Stream
             </button>
-            <button className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full transition-colors cursor-pointer">
+            <button type="button" className="text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full transition-colors cursor-pointer">
               My Clan
             </button>
-            <button className="text-zinc-400 hover:text-[#ccff00] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1 transition-colors cursor-pointer">
+            <button type="button" className="text-zinc-400 hover:text-[#ccff00] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1 transition-colors cursor-pointer">
               <ShieldAlert className="w-3.5 h-3.5" /> Alerts
             </button>
           </div>
 
           {/* SYSTEM TUNER CONTROLS */}
-          <button className="text-zinc-500 hover:text-white flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer min-w-max">
+          <button type="button" className="text-zinc-500 hover:text-white flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer min-w-max">
             <SlidersHorizontal className="w-3.5 h-3.5" /> Filter Config
           </button>
         </div>
@@ -38,13 +43,13 @@ export default function LiveFeedTab() {
       {/* MAIN WORKSPACE LAYOUT CONTAINER */}
       <main className="max-w-7xl mx-auto px-6 lg:px-16 pt-8 md:pt-12 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        {/* ==================== LEFT COLUMN: STATION STATS & BROADCASTER ==================== */}
+        {/* LEFT COLUMN: STATION STATS & BROADCASTER */}
         <section className="space-y-6 md:col-span-5 md:sticky md:top-24">
           
           {/* HUB IDENTITY BADGE */}
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 bg-[#0f172a] px-3 py-1 rounded-full border border-zinc-800/80">
-              <Flame className="w-3.5 h-3.5 text-[#ff1493] shadow-[0_0_8px_#ff1493]" />
+              <Flame className="w-3.5 h-3.5 text-[#ff1493]" />
               <span className="text-[10px] font-bold tracking-wider uppercase text-zinc-400">Node Cluster Alpha</span>
             </div>
             <h1 className="text-4xl lg:text-5xl font-black tracking-tight uppercase italic leading-[0.9]">
@@ -83,17 +88,16 @@ export default function LiveFeedTab() {
             />
             
             <div className="flex items-center justify-between pt-1">
-              {/* COMPONENT INTERACTION ATTACHMENT SHORTCUTS */}
               <div className="flex items-center gap-2">
-                <button className="p-2 bg-[#050506] border border-zinc-900 rounded-lg text-zinc-500 hover:text-[#ff1493] transition-colors cursor-pointer">
+                <button type="button" className="p-2 bg-[#050506] border border-zinc-900 rounded-lg text-zinc-500 hover:text-[#ff1493] transition-colors cursor-pointer">
                   <Image className="w-4 h-4" />
                 </button>
-                <button className="p-2 bg-[#050506] border border-zinc-900 rounded-lg text-zinc-500 hover:text-[#ccff00] transition-colors cursor-pointer">
+                <button type="button" className="p-2 bg-[#050506] border border-zinc-900 rounded-lg text-zinc-500 hover:text-[#ccff00] transition-colors cursor-pointer">
                   <MapPin className="w-4 h-4" />
                 </button>
               </div>
               
-              <button className="bg-[#ff1493] text-[#050506] text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-xl flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-[0_0_15px_rgba(255,20,147,0.2)] hover:brightness-110">
+              <button type="button" className="bg-[#ff1493] text-[#050506] text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-xl flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-[0_0_15px_rgba(255,20,147,0.2)] hover:brightness-110">
                 Transmit Packet <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </button>
             </div>
@@ -103,7 +107,6 @@ export default function LiveFeedTab() {
         {/* ==================== RIGHT COLUMN: CHRONOLOGICAL STREAM ==================== */}
         <section className="space-y-4 md:col-span-7 w-full">
           
-          {/* FEED META CONTROL */}
           <div className="flex items-center justify-between border-b border-zinc-900 pb-3">
             <h2 className="text-xs font-bold uppercase tracking-widest text-[#ccff00] flex items-center gap-2">
               <Radio className="w-4 h-4 text-[#ff1493] animate-pulse" /> Live System Telemetry Stream
@@ -111,10 +114,9 @@ export default function LiveFeedTab() {
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">PACKETS: OPTIMAL</span>
           </div>
 
-          {/* CONSOLIDATED POST STREAM */}
           <div className="space-y-4 w-full">
             
-            {/* STREAM POST ENTRY: 01 (TEXT ONLY) */}
+            {/* STREAM POST ENTRY: 01 */}
             <div className="bg-[#0f172a]/70 border border-zinc-800/40 p-6 rounded-2xl space-y-4 shadow-xl hover:border-zinc-800 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -134,19 +136,19 @@ export default function LiveFeedTab() {
                 Base camp architecture successfully deployed. Next.js 15 layout structures are routing cleanly across local grid structures. Preparing high-altitude survey data loops now.
               </p>
               <div className="flex items-center gap-6 pt-3 border-t border-zinc-900 text-zinc-500 text-xs font-bold uppercase tracking-wider">
-                <button className="flex items-center gap-1.5 hover:text-[#ff1493] transition-colors cursor-pointer group">
-                  <Heart className="w-4 h-4 group-active:scale-125 transition-transform" /> 24
+                <button type="button" className="flex items-center gap-1.5 hover:text-[#ff1493] transition-colors cursor-pointer group">
+                  <Heart className="w-4 h-4" /> 24
                 </button>
-                <button className="flex items-center gap-1.5 hover:text-[#ccff00] transition-colors cursor-pointer">
+                <button type="button" className="flex items-center gap-1.5 hover:text-[#ccff00] transition-colors cursor-pointer">
                   <MessageSquare className="w-4 h-4" /> 8
                 </button>
-                <button className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer ml-auto">
+                <button type="button" className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer ml-auto">
                   <Share2 className="w-4 h-4" /> Route Path
                 </button>
               </div>
             </div>
 
-            {/* STREAM POST ENTRY: 02 (WITH DATA MEDIA CANVAS CAPTURE) */}
+            {/* STREAM POST ENTRY: 02 */}
             <div className="bg-[#0f172a]/70 border border-zinc-800/40 p-6 rounded-2xl space-y-4 shadow-xl hover:border-zinc-800 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -167,25 +169,23 @@ export default function LiveFeedTab() {
                 High-resolution infrared route scanning completed along the north ridge perimeter. Severe ice pack consolidation verified above 3,000 meters. 
               </p>
 
-              {/* SIMULATED MEDIA / TOPO-MAP CANVAS GRAPHIC */}
               <div className="w-full h-48 rounded-xl bg-[#050506] border border-zinc-900 relative overflow-hidden flex items-center justify-center group">
-                <div className="absolute inset-0 bg-radial from-[#ff1493]/5 to-transparent group-hover:from-[#ff1493]/10 transition-all duration-300" />
+                <div className="absolute inset-0 bg-radial from-[#ff1493]/5 to-transparent transition-all duration-300" />
                 <div className="text-center space-y-2 z-10">
-                  <Image className="w-6 h-6 text-zinc-700 mx-auto group-hover:text-[#ff1493] transition-colors" />
+                  <Image className="w-6 h-6 text-zinc-700 mx-auto" />
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Infrared_Topo_Route_04.dat</span>
                 </div>
-                {/* Simulated coordinate geometric grid lines overlay */}
                 <div className="absolute bottom-2 right-3 font-mono text-[9px] text-zinc-600">Grid: E-04</div>
               </div>
 
               <div className="flex items-center gap-6 pt-3 border-t border-zinc-900 text-zinc-500 text-xs font-bold uppercase tracking-wider">
-                <button className="flex items-center gap-1.5 hover:text-[#ff1493] transition-colors cursor-pointer group">
-                  <Heart className="w-4 h-4 group-active:scale-125 transition-transform" /> 142
+                <button type="button" className="flex items-center gap-1.5 hover:text-[#ff1493] transition-colors cursor-pointer group">
+                  <Heart className="w-4 h-4" /> 142
                 </button>
-                <button className="flex items-center gap-1.5 hover:text-[#ccff00] transition-colors cursor-pointer">
+                <button type="button" className="flex items-center gap-1.5 hover:text-[#ccff00] transition-colors cursor-pointer">
                   <MessageSquare className="w-4 h-4" /> 31
                 </button>
-                <button className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer ml-auto">
+                <button type="button" className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer ml-auto">
                   <Share2 className="w-4 h-4" /> Route Path
                 </button>
               </div>
