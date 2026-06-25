@@ -1,18 +1,24 @@
 import React from 'react';
-import NavigationBar from '@/components/NavigationBar';
 import './globals.css'; // Your global Tailwind styles reference
 
+// Thoroughly documented root layout frame
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="bg-slate-950 text-slate-100 antialiased">
-      <body>
-        {/* Main Application Container Frame */}
-        <main className="max-w-md mx-auto min-h-screen px-4 pt-4 pb-24">
-          {children}
-        </main>
+    <html lang="en" className="bg-[#050506] text-[#f4f4f5] antialiased">
+      {/* 
+        The body tag is set to w-full and min-h-screen so the application 
+        can expand fully to fill any screen size (laptop, monitor, or mobile phone).
+      */}
+      <body className="min-h-screen w-full m-0 p-0 overflow-x-hidden">
+        
+        {/* 
+          REMOVED max-w-md and mx-auto. 
+          Now, the content inside {children} has complete freedom to expand full-width on desktop 
+          or snap into a grid layout as defined inside individual page components.
+        */}
+        {children}
 
-        {/* Persistent Bottom Ergonomic Navigation Control System */}
-        <NavigationBar />
       </body>
     </html>
   );
+} // <--- This was the missing closing brace causing the build error!
