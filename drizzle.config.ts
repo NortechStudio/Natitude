@@ -1,13 +1,13 @@
-import type { Config } from 'drizzle-kit';
-
 /**
- * Legacy-compatible configuration block for Drizzle migrations.
+ * Configuration block for Drizzle migrations.
  */
-export default {
+const config = {
   schema: './src/db/schema.ts',
   out: './drizzle',
-  driver: 'pg', // Legacy parameter for older versions of drizzle-kit
+  dialect: 'postgresql',
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL!, // Uses standard cloud string key routing
+    url: process.env.DATABASE_URL!,
   },
-} satisfies Config;
+};
+
+export default config as any;
