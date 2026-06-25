@@ -1,73 +1,80 @@
 import React from 'react';
-import Link from 'next/link';
-import './globals.css';
-import { Compass, Zap, Shield, Bookmark, User } from 'lucide-react';
+import { ArrowUpRight, Flame, Radio, MessageSquare, Heart, Share2 } from 'lucide-react';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function LiveFeedTab() {
   return (
-    <html lang="en" className="bg-[#050506] text-[#f4f4f5] antialiased">
-      <body className="min-h-screen w-full m-0 p-0 overflow-x-hidden pb-24 md:pb-0">
+    <div className="w-full min-h-screen relative">
+      {/* Background radial atmosphere glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-[#0f172a]/50 via-transparent to-transparent -z-10 pointer-events-none" />
+
+      <main className="max-w-7xl mx-auto px-6 lg:px-16 pt-8 md:pt-16 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        {/* GLOBAL HEADER SYSTEM: Static edge-to-edge across all sub-tabs */}
-        <header className="sticky top-0 z-50 w-full border-b border-[#0f172a]/80 bg-[#050506]/80 backdrop-blur-md px-6 lg:px-16 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 select-none no-underline text-inherit">
-            <div className="w-3 h-3 rounded-full bg-[#ff1493] shadow-[0_0_12px_#ff1493] animate-pulse" />
-            <span className="text-xl font-black tracking-tighter uppercase italic">
-              NATITUDE<span className="text-[#ccff00]">.</span>
-            </span>
-          </Link>
-          
-          {/* DESKTOP ROUTING: Updates path urls seamlessly */}
-          <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-400">
-            <Link href="/" className="hover:text-[#ccff00] flex items-center gap-2 transition-colors">
-              <Zap className="w-4 h-4 stroke-[2.5]" /> Live Feed
-            </Link>
-            <Link href="/discovery" className="hover:text-[#ff1493] flex items-center gap-2 transition-colors">
-              <Compass className="w-4 h-4" /> Discovery
-            </Link>
-            <Link href="/clan" className="hover:text-[#ff1493] flex items-center gap-2 transition-colors">
-              <Shield className="w-4 h-4" /> Member Clan
-            </Link>
-            <Link href="/bookmarks" className="hover:text-[#ff1493] flex items-center gap-2 transition-colors">
-              <Bookmark className="w-4 h-4" /> Bookmarks
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:inline-flex items-center gap-2 bg-[#0f172a] border border-zinc-800/80 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-zinc-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-ping" />
-              Core Node Online
-            </div>
-            <button className="flex items-center justify-center w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-[#ff1493] transition-all cursor-pointer">
-              <User className="w-4 h-4" />
-            </button>
+        {/* LEFT COLUMN: Telemetry Console Overview */}
+        <section className="space-y-6 md:col-span-5 md:sticky md:top-28">
+          <div className="inline-flex items-center gap-2 bg-[#0f172a] px-3 py-1 rounded-full border border-zinc-800">
+            <Flame className="w-3.5 h-3.5 text-[#ff1493]" />
+            <span className="text-[10px] font-bold tracking-wider uppercase text-zinc-400">Live Stream Engine</span>
           </div>
-        </header>
+          <h1 className="text-4xl lg:text-5xl font-black tracking-tight uppercase italic leading-[0.9]">
+            Alpine <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff1493] to-[#ccff00]">
+              Telemetry.
+            </span>
+          </h1>
+          <p className="text-sm text-zinc-400 max-w-sm">
+            Real-time status configurations, off-grid trail coordinates, and satellite check-ins directly from the expedition team.
+          </p>
 
-        {/* ACTIVE TAB VIEWS INJECTED HERE */}
-        {children}
+          {/* QUICK BROADCAST COMPONENT INPUT FRAME */}
+          <div className="bg-[#0f172a]/60 border border-zinc-800/80 rounded-2xl p-4 space-y-3">
+            <textarea 
+              placeholder="Broadcast coordinate status to the clan..." 
+              className="w-full bg-[#050506] border border-zinc-800/60 rounded-xl p-3 text-xs focus:outline-none focus:border-[#ff1493]/60 resize-none h-20 text-zinc-200"
+            />
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono text-zinc-500">GPS: DISCONNECTED</span>
+              <button className="bg-[#ff1493] text-[#050506] text-xs font-black uppercase tracking-wider px-4 py-2 rounded-lg flex items-center gap-1.5 active:scale-95 transition-transform cursor-pointer">
+                Transmit <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </button>
+            </div>
+          </div>
+        </section>
 
-        {/* MOBILE FLOATING NAV BAR: Sticky fixed thumb targets for mobile screens */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#050506]/90 backdrop-blur-xl border-t border-[#0f172a] px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex flex-col items-center gap-1 text-[#ccff00]">
-            <Zap className="w-5 h-5 stroke-[2.5]" />
-            <span className="text-[10px] font-bold tracking-tight">Feed</span>
-          </Link>
-          <Link href="/discovery" className="flex flex-col items-center gap-1 text-zinc-500 hover:text-[#ff1493]">
-            <Compass className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Explore</span>
-          </Link>
-          <Link href="/clan" className="flex flex-col items-center gap-1 text-zinc-500 hover:text-[#ff1493]">
-            <Shield className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Clan</span>
-          </Link>
-          <Link href="/bookmarks" className="flex flex-col items-center gap-1 text-zinc-500 hover:text-[#ff1493]">
-            <Bookmark className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Saved</span>
-          </Link>
-        </nav>
+        {/* RIGHT COLUMN: Chronological Feed Post Stream */}
+        <section className="space-y-4 md:col-span-7 w-full">
+          <div className="flex items-center justify-between border-b border-zinc-900 pb-3">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#ccff00] flex items-center gap-2">
+              <Radio className="w-4 h-4 text-[#ff1493] animate-pulse" /> Live Status Stream
+            </h2>
+            <span className="text-[10px] font-mono text-zinc-500">PACKETS: OPTIMAL</span>
+          </div>
 
-      </body>
-    </html>
+          <div className="space-y-4">
+            {/* DUMMY FEED CARD 1 */}
+            <div className="bg-[#0f172a] border border-zinc-800/40 p-6 rounded-2xl space-y-4 shadow-xl">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center font-bold text-xs text-[#ccff00]">AX</div>
+                  <div>
+                    <h3 className="text-sm font-bold text-zinc-100">Alex_Nortech</h3>
+                    <p className="text-[10px] font-mono text-zinc-500">Altitude: 2,430m • 12 mins ago</p>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono font-bold bg-[#ccff00]/10 text-[#ccff00] px-2 py-0.5 rounded border border-[#ccff00]/20">TRAIL HEAD</span>
+              </div>
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Base camp framework completely deployed. Next.js 15 routing configs successfully compiled over local cell arrays. Preparing high-altitude ascent routes now.
+              </p>
+              <div className="flex items-center gap-6 pt-2 border-t border-zinc-900 text-zinc-500 text-xs">
+                <button className="flex items-center gap-1.5 hover:text-[#ff1493] transition-colors cursor-pointer"><Heart className="w-4 h-4" /> 24</button>
+                <button className="flex items-center gap-1.5 hover:text-[#ccff00] transition-colors cursor-pointer"><MessageSquare className="w-4 h-4" /> 8</button>
+                <button className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"><Share2 className="w-4 h-4" /> Route</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
   );
 }
