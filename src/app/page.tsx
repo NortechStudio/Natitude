@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ArrowUpRight, Ticket, GlassWater, ChevronDown, Sparkles, MapPin, Radio, Eye } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight, Ticket, GlassWater, ChevronDown, Radio } from 'lucide-react';
 
 export default function OverhauledClubSite() {
   const [selectedTable, setSelectedTable] = useState<string | null>(null);
@@ -12,28 +13,26 @@ export default function OverhauledClubSite() {
       {/* 1. IMMERSIVE STICKY HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm px-6 lg:px-16 py-6 flex items-center justify-between border-b border-white/5">
         <div className="flex items-center gap-3">
-          {/* CLICKABLE LOGO */}
-          <a 
+          {/* SECURE NEXT.JS LINK ROUTING */}
+          <Link 
             href="/" 
-            className="text-xl font-black tracking-widest uppercase italic bg-gradient-to-r from-white via-zinc-400 to-zinc-600 bg-clip-text text-transparent hover:brightness-125 transition-all decoration-none"
+            className="text-xl font-black tracking-widest uppercase italic bg-gradient-to-r from-white via-zinc-400 to-zinc-600 bg-clip-text text-transparent hover:brightness-125 transition-all no-underline"
           >
             NATITUDE<span className="text-pink-500">.</span>SIGMA
-          </a>
+          </Link>
         </div>
-        
         <nav className="hidden md:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.25em] text-zinc-400">
           <a href="#lineup" className="hover:text-white transition-colors">The Lineup</a>
           <a href="#vip" className="hover:text-white transition-colors">VIP Architecture</a>
           <a href="#experience" className="hover:text-white transition-colors">The Club</a>
         </nav>
-        
         <a href="#vip" className="hidden sm:flex items-center gap-2 border border-white/20 hover:border-pink-500 hover:bg-pink-500 hover:text-black transition-all px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
           Secure Entry
         </a>
       </header>
+
       {/* 2. CINEMATIC HERO LAYER */}
       <section className="relative w-full h-screen flex flex-col justify-end px-6 lg:px-16 pb-24 overflow-hidden">
-        {/* Deep Ambient Atmosphere Backdrop */}
         <div className="absolute inset-0 bg-cover bg-center z-0 scale-105 filter brightness-[0.3] contrast-125 transition-all duration-1000" 
              style={{ backgroundImage: `url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1800')` }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent z-10" />
@@ -45,7 +44,7 @@ export default function OverhauledClubSite() {
             Tonight // Peak System Engaged
           </div>
           <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] italic">
-            DEEP CONCTRETE <br />
+            DEEP CONCRETE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-pink-500 to-violet-800">AUDIO MATRIX</span>
           </h1>
           <p className="text-sm md:text-base text-zinc-400 max-w-xl font-medium tracking-wide leading-relaxed">
@@ -92,7 +91,6 @@ export default function OverhauledClubSite() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1 */}
           <div className="group relative bg-[#0d0d0d] border border-white/5 rounded-3xl overflow-hidden aspect-[4/3] flex flex-col justify-end p-8 hover:border-pink-500/30 transition-all duration-500">
             <div className="absolute inset-0 bg-cover bg-center filter grayscale contrast-125 brightness-[0.4] group-hover:scale-105 group-hover:brightness-[0.5] transition-all duration-700"
                  style={{ backgroundImage: `url('https://images.unsplash.com/photo-1574169208507-84376144848b?auto=format&fit=crop&q=80&w=1000')` }} />
@@ -107,7 +105,6 @@ export default function OverhauledClubSite() {
             </div>
           </div>
 
-          {/* Card 2 */}
           <div className="group relative bg-[#0d0d0d] border border-white/5 rounded-3xl overflow-hidden aspect-[4/3] flex flex-col justify-end p-8 hover:border-pink-500/30 transition-all duration-500">
             <div className="absolute inset-0 bg-cover bg-center filter grayscale contrast-125 brightness-[0.4] group-hover:scale-105 group-hover:brightness-[0.5] transition-all duration-700"
                  style={{ backgroundImage: `url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=1000')` }} />
@@ -156,13 +153,12 @@ export default function OverhauledClubSite() {
             </div>
 
             {selectedTable && (
-              <button type="button" className="w-full bg-pink-500 text-black text-xs font-black uppercase tracking-widest py-4 rounded-xl shadow-[0_10px_30px_rgba(255,20,147,0.3)] hover:brightness-110 transition-all">
+              <button type="button" className="w-full bg-pink-500 text-black text-xs font-black uppercase tracking-widest py-4 rounded-xl shadow-[0_10px_30px_rgba(255,20,147,0.3)] hover:brightness-110 transition-all border-0 cursor-pointer">
                 Submit Reservation for {selectedTable} Sector
               </button>
             )}
           </div>
 
-          {/* RIGHT VISUAL PLACEHOLDER FOR THE FLOORPLAN */}
           <div className="lg:col-span-7 bg-[#0d0d0d] border border-white/5 rounded-3xl aspect-video p-8 flex flex-col justify-between relative overflow-hidden group">
             <div className="absolute inset-0 bg-radial-gradient from-pink-500/10 to-transparent opacity-50" />
             <div className="flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
@@ -170,7 +166,6 @@ export default function OverhauledClubSite() {
               <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 uppercase font-bold">Spatial Map Stable</span>
             </div>
             
-            {/* Mock Visual Map Graphing */}
             <div className="h-32 flex items-center justify-center relative z-10">
               <div className="text-center space-y-1">
                 <p className="text-xs font-mono font-bold text-zinc-400">[ INTERACTIVE FLOOR DIALS ]</p>
