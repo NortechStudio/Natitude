@@ -18,7 +18,7 @@ export default function OverhauledClubSite() {
             href="/" 
             className="text-xl font-black tracking-widest uppercase italic bg-gradient-to-r from-white via-zinc-400 to-zinc-600 bg-clip-text text-transparent hover:brightness-125 transition-all no-underline"
           >
-            NATITUDE<span className="text-pink-500">.</span>SIGMA
+            NATITUDE<span className="text-pink-500"></span>
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.25em] text-zinc-400">
