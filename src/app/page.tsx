@@ -12,20 +12,25 @@ export default function OverhauledClubSite() {
       {/* 1. IMMERSIVE STICKY HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm px-6 lg:px-16 py-6 flex items-center justify-between border-b border-white/5">
         <div className="flex items-center gap-3">
-          <span className="text-xl font-black tracking-widest uppercase italic bg-gradient-to-r from-white via-zinc-400 to-zinc-600 bg-clip-text text-transparent">
+          {/* CLICKABLE LOGO */}
+          <a 
+            href="/" 
+            className="text-xl font-black tracking-widest uppercase italic bg-gradient-to-r from-white via-zinc-400 to-zinc-600 bg-clip-text text-transparent hover:brightness-125 transition-all decoration-none"
+          >
             NATITUDE<span className="text-pink-500">.</span>SIGMA
-          </span>
+          </a>
         </div>
+        
         <nav className="hidden md:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.25em] text-zinc-400">
           <a href="#lineup" className="hover:text-white transition-colors">The Lineup</a>
           <a href="#vip" className="hover:text-white transition-colors">VIP Architecture</a>
           <a href="#experience" className="hover:text-white transition-colors">The Club</a>
         </nav>
+        
         <a href="#vip" className="hidden sm:flex items-center gap-2 border border-white/20 hover:border-pink-500 hover:bg-pink-500 hover:text-black transition-all px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
           Secure Entry
         </a>
       </header>
-
       {/* 2. CINEMATIC HERO LAYER */}
       <section className="relative w-full h-screen flex flex-col justify-end px-6 lg:px-16 pb-24 overflow-hidden">
         {/* Deep Ambient Atmosphere Backdrop */}
