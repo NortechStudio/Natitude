@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Prevents the sticky header from blocking sections */
+}
+
 @theme {
   /* Canvas Layers */
   --color-slate-black: #050506;
